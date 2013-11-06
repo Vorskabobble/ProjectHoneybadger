@@ -29,6 +29,10 @@ int WorldData::height(){
 	return m_height;
 }
 
+int WorldData::uniqTiles(){
+	return m_uniqTiles;
+}
+
 int WorldData::tileSize(){
 	return m_tileSize;
 }
@@ -49,6 +53,6 @@ SDL_Surface* WorldData::tileSheet(){
 	return m_tileSheet;
 }
 
-Tile* WorldData::tildeData(){
+Tile* WorldData::tileData(){
 	return m_tileData;
 }

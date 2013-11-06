@@ -61,7 +61,7 @@ Landscape* WorldManager::loadLandscape(int worldID, int width, int height, int t
 }
 
 WorldData* WorldManager::load(int worldID){
-	int t_width, t_height, t_tileSize,  t_chunkSize, t_numChunks, t_numZones;
+	int t_width, t_height, t_uniqTiles, t_tileSize,  t_chunkSize, t_numChunks, t_numZones;
 	char s[50];
 	sprintf(s, "map/world %i/map.dat", worldID);
 	std::string worldDir = s;
@@ -69,6 +69,7 @@ WorldData* WorldManager::load(int worldID){
 
 	data >> t_width;
 	data >> t_height;
+	data >> t_uniqTiles;
 	data >> t_tileSize;
 	data >> t_chunkSize;
 	data >> t_numChunks;
@@ -76,7 +77,7 @@ WorldData* WorldManager::load(int worldID){
 
 	data.close();
 
-	Tile *t_tiles = loadTile(worldID, t_width * t_height);
+	Tile *t_tiles = loadTile(worldID, t_uniqTiles);
 	Landscape *t_landscape = loadLandscape(worldID, t_width, t_height, t_tileSize, t_tiles);
 	//zones
 	//chunks

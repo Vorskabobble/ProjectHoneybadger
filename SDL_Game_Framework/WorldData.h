@@ -4,7 +4,7 @@
 
 class WorldData{
 private:
-	int m_width, m_height, m_tileSize, m_chunkSize;
+	int m_width, m_height, m_uniqTiles, m_tileSize, m_chunkSize;
 	int *m_tiles;
 
 //temp return type, change when classes have been coded
@@ -19,6 +19,7 @@ public:
 
 	int width();
 	int height();
+	int uniqTiles();
 	int tileSize();
 	int chunkSize();
 	int* tiles();
@@ -26,5 +27,5 @@ public:
 	SDL_Surface* landscape();
 	SDL_Surface* tileSheet();
 
-	Tile* tildeData();
+	Tile* tileData();
 };

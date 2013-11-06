@@ -144,11 +144,13 @@ void GameBase::getUserInput(){
 			mouseButton = an_event.button.button; // SDL_BUTTON_LEFT)
 			mouseX = an_event.button.x;
 			mouseY = an_event.button.y;
+			onMousePressed();
 			break;
 		case SDL_MOUSEBUTTONUP:
 			mouseButton = an_event.button.button; // SDL_BUTTON_LEFT)
 			mouseX = an_event.button.x;
 			mouseY = an_event.button.y;
+			onMouseReleased();
 			break;
 		default:
 			// An event that we do not need to process
