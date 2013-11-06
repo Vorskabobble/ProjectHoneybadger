@@ -8,10 +8,7 @@ int main(int argc, char* argv[]){
 	editor->setup();
 	editor->start();
 
-
-
 	delete editor;
-
 
 	return 0;
 }
