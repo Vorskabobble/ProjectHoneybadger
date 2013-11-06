@@ -6,7 +6,8 @@ class Editor : public GameBase{
 private:
 	int m_selTile;
 
-	SDL_Rect m_place, m_tile;
+	SDL_Rect m_place, m_tile, m_cam;
+	bool m_cUp, m_cDown, m_cLeft, m_cRight;
 public:
 	Editor(void);
 	~Editor(void);
@@ -18,6 +19,10 @@ public:
 	void setup();
 	void start();
 
+	void camera();
+
 	void onMousePressed();
+	void onKeyPressed();
+	void onKeyReleased();
 };
 
