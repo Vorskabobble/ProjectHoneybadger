@@ -82,7 +82,7 @@ WorldData* WorldManager::load(int worldID){
 	//zones
 	//chunks
 
-	WorldData *world = new WorldData(t_width, t_height, t_tileSize, t_chunkSize, t_landscape->tiles(), t_tiles, t_landscape->landscape(), t_landscape->tileSheet());
+	WorldData *world = new WorldData(t_width, t_height, t_uniqTiles, t_tileSize, t_chunkSize, t_landscape->tiles(), t_tiles, t_landscape->landscape(), t_landscape->tileSheet());
 
 	return world;
 }

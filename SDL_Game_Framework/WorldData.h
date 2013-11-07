@@ -14,7 +14,7 @@ private:
 	Tile *m_tileData;
 
 public:
-	WorldData(int width, int height, int tileSize, int chunkSize, int tiles[], Tile tileData[], SDL_Surface* landscape, SDL_Surface* tileSheet);
+	WorldData(int width, int height, int uniqTiles, int tileSize, int chunkSize, int tiles[], Tile tileData[], SDL_Surface* landscape, SDL_Surface* tileSheet);
 	~WorldData();
 
 	int width();

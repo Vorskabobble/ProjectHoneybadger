@@ -1,8 +1,9 @@
 #include "WorldData.h"
 
-WorldData::WorldData(int width, int height, int tileSize, int chunkSize, int tiles[], Tile tileData[], SDL_Surface* landscape, SDL_Surface* tileSheet){
+WorldData::WorldData(int width, int height, int uniqTiles, int tileSize, int chunkSize, int tiles[], Tile tileData[], SDL_Surface* landscape, SDL_Surface* tileSheet){
 	m_width = width;
 	m_height = height;
+	m_uniqTiles = uniqTiles;
 	m_tileSize = tileSize;
 	m_chunkSize = chunkSize;
 	m_tiles = tiles;

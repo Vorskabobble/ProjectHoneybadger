@@ -8,6 +8,8 @@ private:
 
 	SDL_Rect m_place, m_tile, m_cam;
 	bool m_cUp, m_cDown, m_cLeft, m_cRight;
+	bool click;
+	int m_bRadius;
 public:
 	Editor(void);
 	~Editor(void);
@@ -15,6 +17,7 @@ public:
 	WorldData *world;
 	void editTile();
 	void redrawTile();
+	void brush();
 
 	void setup();
 	void start();
@@ -22,6 +25,8 @@ public:
 	void camera();
 
 	void onMousePressed();
+	void onMouseMoved();
+	void onMouseReleased();
 	void onKeyPressed();
 	void onKeyReleased();
 };

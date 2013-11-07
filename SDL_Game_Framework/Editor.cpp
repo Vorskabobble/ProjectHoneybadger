@@ -9,7 +9,9 @@ Editor::Editor(void)
 	m_cam.w = screen->w;
 	m_cam.h = screen->h;
 
-	m_cUp = m_cDown = m_cLeft = m_cRight = false;
+	m_cUp = m_cDown = m_cLeft = m_cRight = click = false;
+
+	m_bRadius = 2;
 }
 
 
@@ -50,10 +52,50 @@ void Editor::redrawTile(){
 	m_place.x = (((pmouseX + m_cam.x)/world->tileSize()) * world->tileSize());
 	m_place.y = (((pmouseY + m_cam.y)/world->tileSize()) * world->tileSize());
 
-	m_tile.x = (m_selTile % (world->tileSheet()->w / world->tileSize())) * world->tileSize();
+	m_tile.x = (world->tileData()[m_selTile].X() * world->tileSize());
 	m_tile.y = (m_selTile / (world->tileSheet()->w / world->tileSize())) * world->tileSize();
 
 	SDL_BlitSurface(world->tileSheet(), &m_tile, world->landscape(), &m_place);
+}
+
+void Editor::brush(){
+	int t_cX = (pmouseX + m_cam.x)/world->tileSize();
+	int t_cY = (pmouseY + m_cam.y)/world->tileSize();
+	int t_X = t_cX - m_bRadius;
+	int t_Y = t_cY - m_bRadius;
+
+	int a = 0;
+	int b = 0;
+
+	for(int i = 0; i < (m_bRadius + m_bRadius + 1) * (m_bRadius + m_bRadius + 1); i++){
+		if(t_X < t_cX){
+			a = t_cX - t_X;
+		}
+		else{
+			a = t_X - t_cX;
+		}
+		if(t_Y < t_cY){
+			b = t_cY - t_Y;
+		}
+		else{
+			b = t_Y - t_cY;
+		}
+		if(m_bRadius >= sqrt((a * a) + (b * b))){
+			int temp = t_X + (t_Y * world->width());
+			world->tiles()[temp] = m_selTile;
+			m_place.x = t_X * world->tileSize();
+			m_place.y = t_Y * world->tileSize();	
+			m_tile.x = world->tileData()[m_selTile].X() * world->tileSize();
+			m_tile.y = world->tileData()[m_selTile].Y() * world->tileSize();
+
+			SDL_BlitSurface(world->tileSheet(), &m_tile, world->landscape(), &m_place);
+		}
+		t_X++;
+		if(t_X > t_cX + m_bRadius){
+			t_X = t_cX - m_bRadius;
+			t_Y++;
+		}
+	}
 }
 
 void Editor::camera(){
@@ -84,13 +126,31 @@ void Editor::camera(){
 }
 
 void Editor::onMousePressed(){
-	if(mouseButton = SDL_BUTTON_LEFT){
-		editTile();
+	if(mouseButton == SDL_BUTTON_LEFT){
+		brush();
+		click = true;
 	}
-	if(mouseButton = SDL_BUTTON_MIDDLE){
+	if(mouseButton == SDL_BUTTON_RIGHT){
 		for(int i = 0; i < world->uniqTiles(); i++){
-			cout << world->tiles()[i] << endl;
+			cout << world->tileData()[i].tileID() << endl;
 		}
+	}
+	if(mouseButton == SDL_BUTTON_MIDDLE){
+		for(int i = 0; i < world->width() * world->height(); i++){
+			cout << world->tiles()[i] << " ";
+		}
+	}
+}
+
+void Editor::onMouseMoved(){
+	if(click){
+		brush();
+	}
+}
+
+void Editor::onMouseReleased(){
+	if(mouseButton == SDL_BUTTON_LEFT){
+		click = false;
 	}
 }
 
