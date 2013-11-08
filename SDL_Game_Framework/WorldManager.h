@@ -15,5 +15,5 @@ public:
 	static WorldData* load(int worldID);
 	static void save(int worldID, WorldData* data);
 
-	static WorldData* newWorld(int worldID);
+//	static WorldData* newWorld(int worldID);
 };

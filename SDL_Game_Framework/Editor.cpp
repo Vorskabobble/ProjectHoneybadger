@@ -22,7 +22,7 @@ Editor::~Editor(void)
 
 void Editor::setup(){
 	world = WorldManager::load(1);
-	WorldManager::newWorld(1);
+//	WorldManager::newWorld(1);
 
 	m_tile.x = m_tile.y = m_place.x = m_place.y = 0;
 	m_tile.w = m_tile.h = m_place.w = m_place.h = world->tileSize();
