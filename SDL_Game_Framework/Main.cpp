@@ -1,19 +1,13 @@
-#include "Editor.h"
+#include "ScreenManager.h"
 
 int main(int argc, char* argv[]){
-	GameBase::initSDL(1200, 720);
+	GameBase::initSDL(1280, 720);
 
-	GameBase* editor = new Editor();
+	GameBase* menu = new ScreenManager();
 
-	editor->setup();
-	editor->start();
+	menu->setup();
 
-
-
-
-
-
-	delete editor;
+	delete menu;
 
 	return 0;
 }
