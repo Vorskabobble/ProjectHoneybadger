@@ -87,6 +87,7 @@
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="Landscape.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="SDL.h" />
     <ClInclude Include="SDL_events.h" />
     <ClInclude Include="SDL_image.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Landscape.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="WorldData.cpp" />
     <ClCompile Include="WorldManager.cpp" />
