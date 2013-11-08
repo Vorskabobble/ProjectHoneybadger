@@ -15,8 +15,8 @@ public:
 	~Editor(void);
 
 	WorldData *world;
-	void editTile();
-	void redrawTile();
+	
+	void redrawTile(int x, int y);
 	void brush();
 
 	void setup();

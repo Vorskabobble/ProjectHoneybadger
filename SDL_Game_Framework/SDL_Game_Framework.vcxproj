@@ -98,6 +98,7 @@
     <ClInclude Include="WorldConst.h" />
     <ClInclude Include="WorldData.h" />
     <ClInclude Include="WorldManager.h" />
+    <ClInclude Include="Zone.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="audiomanager.cpp" />
@@ -109,6 +110,7 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="WorldData.cpp" />
     <ClCompile Include="WorldManager.cpp" />
+    <ClCompile Include="Zone.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

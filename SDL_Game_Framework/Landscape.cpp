@@ -1,6 +1,5 @@
 #include "Landscape.h"
 
-
 Landscape::Landscape(int width, int height, int tileSize, int tiles[], Tile tileData[], SDL_Surface* tileSheet){
 	m_tileData = tileData;
 	m_tileSheet = tileSheet;
@@ -8,7 +7,6 @@ Landscape::Landscape(int width, int height, int tileSize, int tiles[], Tile tile
 
 	createLandscape(width, height, tileSize);
 }
-
 
 Landscape::~Landscape(void)
 {
@@ -40,8 +38,8 @@ void Landscape::createLandscape(int width, int height, int size){
 		SDL_MapRGB(m_landscape->format, 0, 150, 0));
 	
 	SDL_Rect t_tile, t_place;
-	t_tile.w = t_tile.h = t_place.w = t_place.h = size;
 	t_tile.x = t_tile.y = t_place.x = t_place.y = 0;
+	t_tile.w = t_tile.h = t_place.w = t_place.h = size;
 
 	for(int i = 0; i < width * height; i++){
 		t_tile.x = (m_tiles[i] % (m_tileSheet->w / size)) * size;

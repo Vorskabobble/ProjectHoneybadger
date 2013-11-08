@@ -22,9 +22,10 @@ Editor::~Editor(void)
 
 void Editor::setup(){
 	world = WorldManager::load(1);
+	WorldManager::newWorld(1);
 
-	m_tile.w = m_tile.h = m_place.w = m_place.h = world->tileSize();
 	m_tile.x = m_tile.y = m_place.x = m_place.y = 0;
+	m_tile.w = m_tile.h = m_place.w = m_place.h = world->tileSize();
 }
 
 void Editor::start(){
@@ -41,19 +42,12 @@ void Editor::start(){
 	}
 }
 
-void Editor::editTile(){
-	int temp;
-	temp = ((pmouseX + m_cam.x)/world->tileSize()) + (((pmouseY + m_cam.y)/world->tileSize()) *world->width());
-	world->tiles()[temp] = m_selTile;
-	redrawTile();
-}
+void Editor::redrawTile(int x, int y){
+	m_place.x = x;
+	m_place.y = y;
 
-void Editor::redrawTile(){
-	m_place.x = (((pmouseX + m_cam.x)/world->tileSize()) * world->tileSize());
-	m_place.y = (((pmouseY + m_cam.y)/world->tileSize()) * world->tileSize());
-
-	m_tile.x = (world->tileData()[m_selTile].X() * world->tileSize());
-	m_tile.y = (m_selTile / (world->tileSheet()->w / world->tileSize())) * world->tileSize();
+	m_tile.x = world->tileData()[m_selTile].X() * world->tileSize();
+	m_tile.y = world->tileData()[m_selTile].Y() * world->tileSize();
 
 	SDL_BlitSurface(world->tileSheet(), &m_tile, world->landscape(), &m_place);
 }
@@ -64,37 +58,40 @@ void Editor::brush(){
 	int t_X = t_cX - m_bRadius;
 	int t_Y = t_cY - m_bRadius;
 
+
+	//create a select tile function, add these to it
+	m_tile.x = world->tileData()[m_selTile].X() * world->tileSize();
+	m_tile.y = world->tileData()[m_selTile].Y() * world->tileSize();
+
 	int a = 0;
 	int b = 0;
 
-	for(int i = 0; i < (m_bRadius + m_bRadius + 1) * (m_bRadius + m_bRadius + 1); i++){
-		if(t_X < t_cX){
-			a = t_cX - t_X;
-		}
-		else{
-			a = t_X - t_cX;
-		}
-		if(t_Y < t_cY){
-			b = t_cY - t_Y;
-		}
-		else{
-			b = t_Y - t_cY;
-		}
-		if(m_bRadius >= sqrt((a * a) + (b * b))){
-			int temp = t_X + (t_Y * world->width());
-			world->tiles()[temp] = m_selTile;
-			m_place.x = t_X * world->tileSize();
-			m_place.y = t_Y * world->tileSize();	
-			m_tile.x = world->tileData()[m_selTile].X() * world->tileSize();
-			m_tile.y = world->tileData()[m_selTile].Y() * world->tileSize();
+	for(int i = 0; i < m_bRadius*2; i++){
+		for(int j = 0; j < m_bRadius*2; j++){
+			if(t_X < 0 || t_Y < 0 || t_X >= world->width() || t_Y >= world->height()){
+				t_X++;
+				continue;
+			}
 
-			SDL_BlitSurface(world->tileSheet(), &m_tile, world->landscape(), &m_place);
+			a = t_X - t_cX;
+			b = t_Y - t_cY;
+
+			if(a < 0){
+				a = -a;
+			}
+			if(b < 0){
+				b = -b;
+			}
+			if(m_bRadius > sqrt((a*a)+(b*b))){
+				int temp = t_X + (t_Y * world->width());
+				world->tiles()[temp] = m_selTile;
+
+				redrawTile(t_X * world->tileSize(), t_Y * world->tileSize());
+			}
+			t_X++;
 		}
-		t_X++;
-		if(t_X > t_cX + m_bRadius){
-			t_X = t_cX - m_bRadius;
-			t_Y++;
-		}
+		t_X = t_cX - m_bRadius;
+		t_Y++;
 	}
 }
 
@@ -131,13 +128,25 @@ void Editor::onMousePressed(){
 		click = true;
 	}
 	if(mouseButton == SDL_BUTTON_RIGHT){
-		for(int i = 0; i < world->uniqTiles(); i++){
-			cout << world->tileData()[i].tileID() << endl;
+		if(m_selTile == 0){
+			m_selTile = 1;
 		}
+		else{
+			m_selTile = 0;
+		}
+
 	}
 	if(mouseButton == SDL_BUTTON_MIDDLE){
 		for(int i = 0; i < world->width() * world->height(); i++){
 			cout << world->tiles()[i] << " ";
+		}
+	}
+	if(mouseButton == SDL_BUTTON_WHEELUP){
+		m_bRadius++;
+	}
+	if(mouseButton == SDL_BUTTON_WHEELDOWN){
+		if(m_bRadius > 1){
+			m_bRadius--;
 		}
 	}
 }
@@ -160,6 +169,7 @@ void Editor::onKeyPressed(){
 	case SDLK_d: m_cRight = true; break;
 	case SDLK_w: m_cUp = true; break;
 	case SDLK_s: m_cDown = true; break;
+	case SDLK_p: WorldManager::save(1, world); break;
 	default: break;
 	}
 }
