@@ -87,6 +87,9 @@
     <ClInclude Include="Zone.h">
       <Filter>Header Files\World</Filter>
     </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBase.cpp">
@@ -97,9 +100,6 @@
     </ClCompile>
     <ClCompile Include="audiomanager.cpp">
       <Filter>Source Files\framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files\World</Filter>
@@ -118,6 +118,12 @@
     </ClCompile>
     <ClCompile Include="Zone.cpp">
       <Filter>Source Files\World</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
