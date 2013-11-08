@@ -22,7 +22,7 @@ Editor::~Editor(void)
 
 void Editor::setup(){
 	world = WorldManager::load(1);
-	WorldManager::newWorld(1);
+//	WorldManager::newWorld(1);
 
 	m_tile.x = m_tile.y = m_place.x = m_place.y = 0;
 	m_tile.w = m_tile.h = m_place.w = m_place.h = world->tileSize();
@@ -55,8 +55,8 @@ void Editor::redrawTile(int x, int y){
 void Editor::brush(){
 	int t_cX = (pmouseX + m_cam.x)/world->tileSize();
 	int t_cY = (pmouseY + m_cam.y)/world->tileSize();
-	int t_X = t_cX - m_bRadius/2;
-	int t_Y = t_cY - m_bRadius/2;
+	int t_X = t_cX - m_bRadius;
+	int t_Y = t_cY - m_bRadius;
 
 
 	//create a select tile function, add these to it
@@ -66,8 +66,8 @@ void Editor::brush(){
 	int a = 0;
 	int b = 0;
 
-	for(int i = 0; i < m_bRadius; i++){
-		for(int j = 0; j < m_bRadius; j++){
+	for(int i = 0; i < m_bRadius*2; i++){
+		for(int j = 0; j < m_bRadius*2; j++){
 			if(t_X < 0 || t_Y < 0 || t_X >= world->width() || t_Y >= world->height()){
 				t_X++;
 				continue;
@@ -82,7 +82,7 @@ void Editor::brush(){
 			if(b < 0){
 				b = -b;
 			}
-			if((double)m_bRadius/2 > sqrt(((double)a*(double)a)+((double)b*(double)b))){
+			if(m_bRadius > sqrt((a*a)+(b*b))){
 				int temp = t_X + (t_Y * world->width());
 				world->tiles()[temp] = m_selTile;
 
@@ -90,7 +90,7 @@ void Editor::brush(){
 			}
 			t_X++;
 		}
-		t_X = t_cX - m_bRadius/2;
+		t_X = t_cX - m_bRadius;
 		t_Y++;
 	}
 }
