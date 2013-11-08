@@ -146,12 +146,13 @@ void WorldManager::saveLandscape(int worldID, WorldData* data){
 	}
 }
 
-//WorldData* WorldManager::newWorld(int worldID){
-//	char s[50];
-//	sprintf_s(s, "map/world %i/map.dat", worldID);
-//	std::string worldDir = s;
-//	std::ifstream data(worldDir);
-//	if(data){
-//		std::cout << "file exists" << std::endl;
-//	}
-//}
+WorldData* WorldManager::newWorld(int worldID){
+	char s[50];
+	sprintf_s(s, "map/world %i/map.dat", worldID);
+	std::string worldDir = s;
+	std::ifstream data(worldDir);
+	if(data){
+		std::cout << "file exists" << std::endl;
+	}
+	return NULL;
+}
