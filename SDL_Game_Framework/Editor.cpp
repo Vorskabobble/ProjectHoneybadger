@@ -12,6 +12,9 @@ Editor::Editor(void)
 	m_cUp = m_cDown = m_cLeft = m_cRight = click = false;
 
 	m_bRadius = 2;
+
+	setup();
+	start();
 }
 
 

@@ -85,6 +85,10 @@ void GameBase::start(){
 	gameLoop();
 }
 
+int GameBase::getScreenNum(){
+	return NULL;
+}
+
 void GameBase::setBackground(int red, int green, int blue){
 	bg = getSurface(width, height, red, green, blue);
 }

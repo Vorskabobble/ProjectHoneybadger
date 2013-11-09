@@ -1,20 +1,17 @@
 #pragma once
-#include "gamebase.h"
+#include "MenuScreen.h"
 #include "Editor.h"
 
-class ScreenManager :public GameBase{
-	GameBase* m_screen;
-	AWSprite* btn[2];
-public:
-	void setup();
-	void start();
-	void logic();
-	void draw();
-	void onMouseReleased();
-	void startEditor();
-	void startGame();
+enum Screens{MENU, EDITOR, GAME};
 
+class ScreenManager{
+	GameBase* curScreen;
+	int screenNum;
+public:
 	ScreenManager(void);
 	~ScreenManager(void);
+
+	void start();
+	void changeScreen();
 };
 
