@@ -31,6 +31,7 @@ This has the core functionality to create simple games. <br>
 All games should be built from its own game class that inherits
 from this class. <br>
 */
+
 class GameBase
 {
 public:
@@ -47,6 +48,7 @@ public:
 	call this method to start the game.
 	*/
 	virtual void start();
+	virtual int getScreenNum();
 
 protected:
 	SDL_Surface* screen;
