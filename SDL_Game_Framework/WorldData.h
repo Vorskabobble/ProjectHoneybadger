@@ -31,4 +31,6 @@ public:
 	SDL_Surface* tileSheet();
 
 	Tile* tileData();
+
+	void newLandscape(SDL_Surface* landscape);
 };

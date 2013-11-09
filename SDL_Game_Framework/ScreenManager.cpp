@@ -51,10 +51,8 @@ void ScreenManager::draw(){
 
 void ScreenManager::startEditor(){
 	m_screen = new Editor();
-	m_screen->setup();
-	m_screen->start();
 
-	delete m_screen;
+//	delete m_screen;
 }
 
 void ScreenManager::startGame(){

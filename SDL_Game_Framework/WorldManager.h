@@ -12,8 +12,12 @@ public:
 	WorldManager();
 	~WorldManager(void);
 
-	static WorldData* load(int worldID);
-	static void save(int worldID, WorldData* data);
+	static bool worldExists(int worldID);
 
-//	static WorldData* newWorld(int worldID);
+	static WorldData* loadWorld(int worldID);
+	static bool saveWorld(int worldID, WorldData* data);
+
+	static WorldData* newWorld();
+	static void newTile(WorldData* world, int X, int Y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid);
+	static void newLandscape(WorldData* world, int width, int height);
 };
