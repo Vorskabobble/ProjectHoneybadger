@@ -82,6 +82,7 @@
     <ClInclude Include="audiomanager.h" />
     <ClInclude Include="AWFont.h" />
     <ClInclude Include="AWSprite.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="GameBase.h" />
@@ -104,6 +105,7 @@
   <ItemGroup>
     <ClCompile Include="audiomanager.cpp" />
     <ClCompile Include="AWSprite.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Landscape.cpp" />

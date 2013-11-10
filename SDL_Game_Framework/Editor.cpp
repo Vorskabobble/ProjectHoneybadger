@@ -16,14 +16,13 @@ Editor::Editor(void)
 	start();
 }
 
-
 Editor::~Editor(void)
 {
 	delete world;
 }
 
 void Editor::setup(){
-	world = WorldManager::loadWorld(1);
+	world = WorldManager::loadWorld(0);
 //	WorldManager::newWorld(2);
 
 	m_tile.x = m_tile.y = m_place.x = m_place.y = 0;
@@ -138,9 +137,9 @@ void Editor::onMousePressed(){
 
 	}
 	if(mouseButton == SDL_BUTTON_MIDDLE){
-		delete world;
-		world = WorldManager::newWorld();
-		WorldManager::newLandscape(world, 200, 200);
+		//delete world;
+		//world = WorldManager::newWorld();
+		//WorldManager::newLandscape(world, 200, 200);
 	}
 	if(mouseButton == SDL_BUTTON_WHEELUP){
 		m_brushSize++;

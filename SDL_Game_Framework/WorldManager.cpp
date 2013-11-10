@@ -48,8 +48,6 @@ WorldData* WorldManager::loadWorld(int worldID){
 
 	Tile *t_tiles = loadTile(worldID, t_uniqTiles);
 	Landscape *t_landscape = loadLandscape(worldID, t_width, t_height, t_tileSize, t_tiles);
-	//zones
-	//chunks
 
 	WorldData *world = new WorldData(t_width, t_height, t_uniqTiles, t_tileSize, t_chunkSize, t_numChunks, t_numZones, t_landscape->tiles(), t_tiles, t_landscape->landscape(), t_landscape->tileSheet());
 
@@ -175,19 +173,19 @@ void WorldManager::saveLandscape(int worldID, WorldData* data){
 	}
 }
 
-WorldData* WorldManager::newWorld(){
-	WorldData *world = loadWorld(0);
-	return world;
-}
-
-void WorldManager::newTile(WorldData* world, int X, int Y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid){
-
-}
-
-void WorldManager::newLandscape(WorldData* world, int width, int height){
-	delete world->tiles();
-	int* t_tiles = new int[width * height];
-	Landscape* temp = new Landscape(width, height, world->tileSize());
-	world->newLandscape(temp->landscape());
-
-}
+//WorldData* WorldManager::newWorld(){
+//	WorldData *world = loadWorld(0);
+//	return world;
+//}
+//
+//void WorldManager::newTile(WorldData* world, int X, int Y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid){
+//
+//}
+//
+//void WorldManager::newLandscape(WorldData* world, int width, int height){
+//	delete world->tiles();
+//	int* t_tiles = new int[width * height];
+//	Landscape* temp = new Landscape(width, height, world->tileSize());
+//	world->newLandscape(temp->landscape());
+//
+//}
