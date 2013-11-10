@@ -9,18 +9,19 @@ private:
 	SDL_Rect m_place, m_tile, m_cam;
 	bool m_cUp, m_cDown, m_cLeft, m_cRight;
 	bool click;
-	int m_bRadius;
+	float m_brushSize;
 public:
 	Editor(void);
 	~Editor(void);
 
 	WorldData *world;
 	
-	void redrawTile(int x, int y);
+	void redrawTile(int x, int y, int tile);
 	void brush();
 
 	void setup();
 	void start();
+	void draw();
 
 	void camera();
 
@@ -30,4 +31,3 @@ public:
 	void onKeyPressed();
 	void onKeyReleased();
 };
-
