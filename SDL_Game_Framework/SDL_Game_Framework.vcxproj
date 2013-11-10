@@ -89,6 +89,7 @@
     <ClInclude Include="Landscape.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="SDL.h" />
     <ClInclude Include="SDL_events.h" />

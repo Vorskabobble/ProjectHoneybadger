@@ -2,8 +2,13 @@
 
 
 MenuScreen::MenuScreen(void){
+<<<<<<< HEAD
         screenNum = 0;
         setup();
+=======
+	screenNum = 0;
+	setup();
+>>>>>>> origin/Master
 }
 
 
@@ -12,6 +17,7 @@ MenuScreen::~MenuScreen(void){
 }
 
 void MenuScreen::setup(){
+<<<<<<< HEAD
         setBackground("images/menu_bg.jpg");
         
         for(int i = 0; i < 2; i++){
@@ -39,12 +45,42 @@ void MenuScreen::start(){
                 SDL_Flip(screen);
                 post();
         }
+=======
+	setBackground("images/menu_bg.jpg");
+	
+	for(int i = 0; i < 2; i++){
+		btn[i] = new AWSprite();
+	}
+
+	btn[0]->setImage("images/editor_btn.png");
+	btn[1]->setImage("images/game_btn.png");
+
+	for(int i = 0; i < 2; i ++){
+		btn[i]->set_world_position(screen->w/2-btn[i]->get_width()/2, 100+i*200);
+	}
+
+	start();
+}
+
+void MenuScreen::start(){
+	gameover = false;
+	while(!gameover) {
+		SDL_Delay(10);
+		getUserInput();
+		logic();
+		SDL_BlitSurface(bg, NULL, screen, NULL);
+		draw();
+		SDL_Flip(screen);
+		post();
+	}
+>>>>>>> origin/Master
 }
 
 void MenuScreen::logic(){
 }
 
 void MenuScreen::draw(){
+<<<<<<< HEAD
         for(int i = 0; i < 2; i++){
                 btn[i]->update_everything();
         }
@@ -62,4 +98,23 @@ void MenuScreen::onMouseReleased(){
                         gameover = true;
                 }
         }
+=======
+	for(int i = 0; i < 2; i++){
+		btn[i]->update_everything();
+	}
+}
+
+int MenuScreen::getScreenNum(){
+	return screenNum;
+}
+
+void MenuScreen::onMouseReleased(){
+	for(int i = 0; i < 2; i++){
+		if(btn[i]->get_x()+btn[i]->get_width() + btn[i]->get_x() > mouseX && btn[i]->get_x() < mouseX && btn[i]->get_y() < mouseY && btn[i]->get_y() + btn[i]->get_height() > mouseY){
+			screenNum = i+1;
+
+			gameover = true;
+		}
+	}
+>>>>>>> origin/Master
 }
