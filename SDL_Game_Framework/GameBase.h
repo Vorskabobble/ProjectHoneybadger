@@ -159,5 +159,4 @@ public:
     provide an image to use.
     */
     static int initSDL(int width, int height);
-
 };
