@@ -86,7 +86,7 @@ void GameBase::start(){
 }
 
 int GameBase::getScreenNum(){
-	return NULL;
+	return -1;
 }
 
 void GameBase::setBackground(int red, int green, int blue){
@@ -121,6 +121,7 @@ void GameBase::getUserInput(){
 		{
 		case SDL_QUIT:
 			gameover = true;
+			getScreenNum();
 			break;
 		case SDL_KEYDOWN:
 			ctrlPressed = ((an_event.key.keysym.mod & KMOD_CTRL) == KMOD_CTRL);
