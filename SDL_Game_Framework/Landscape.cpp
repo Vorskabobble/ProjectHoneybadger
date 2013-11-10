@@ -8,13 +8,16 @@ Landscape::Landscape(int width, int height, int tileSize, int tiles[], Tile tile
 	createLandscape(width, height, tileSize);
 }
 
+Landscape::Landscape(int width, int height, int tileSize){
+	newSurface(width, height, tileSize);
+}
 Landscape::~Landscape(void)
 {
 	delete[] m_tiles;
 	delete[] m_tileData;
 }
 
-void Landscape::createLandscape(int width, int height, int size){
+void Landscape::newSurface(int width, int height, int tileSize){
 	Uint32 rmask, gmask, bmask, amask;
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -30,13 +33,14 @@ void Landscape::createLandscape(int width, int height, int size){
 #endif
 	SDL_Surface *scr = SDL_GetVideoSurface();
 	SDL_Surface *temp;
-	temp = SDL_CreateRGBSurface(scr->flags, width * size, height * size,
-								32, rmask, gmask, bmask, amask);
+	temp = SDL_CreateRGBSurface(scr->flags, width * tileSize, height * tileSize, 32, rmask, gmask, bmask, amask);
 	m_landscape = SDL_DisplayFormat(temp);
 	SDL_FreeSurface(temp);
-	SDL_FillRect(m_landscape, NULL, 
-		SDL_MapRGB(m_landscape->format, 0, 150, 0));
-	
+	SDL_FillRect(m_landscape, NULL, SDL_MapRGB(m_landscape->format, 0, 150, 0));
+}
+
+void Landscape::createLandscape(int width, int height, int size){
+	newSurface(width, height, size);
 	SDL_Rect t_tile, t_place;
 	t_tile.x = t_tile.y = t_place.x = t_place.y = 0;
 	t_tile.w = t_tile.h = t_place.w = t_place.h = size;

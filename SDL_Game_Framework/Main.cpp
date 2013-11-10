@@ -1,11 +1,11 @@
 #include "ScreenManager.h"
 
 int main(int argc, char* argv[]){
-	GameBase::initSDL(1280, 720);
+        GameBase::initSDL(1280, 720);
 
-	ScreenManager* myManager = new ScreenManager();
+        ScreenManager* myManager = new ScreenManager();
 
-	delete myManager;
+        delete myManager;
 
-	return 0;
+        return 0;
 }
