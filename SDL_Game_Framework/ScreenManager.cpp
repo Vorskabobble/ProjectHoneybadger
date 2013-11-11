@@ -12,7 +12,7 @@ ScreenManager::~ScreenManager(void){
 
 void ScreenManager::start(){
         while(curScreen != NULL){
-                screenNum = curScreen->getScreenNum();
+				screenNum = curScreen->getScreenNum();
                 changeScreen();
         }
 }
