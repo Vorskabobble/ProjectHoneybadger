@@ -1,5 +1,6 @@
 #pragma once
 #include "WorldData.h"
+#include <direct.h>
 
 static class WorldManager{
 private:

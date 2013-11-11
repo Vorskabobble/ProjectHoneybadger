@@ -87,7 +87,6 @@
     <ClInclude Include="Editor.h" />
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="Landscape.h" />
-    <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="ScreenManager.h" />
