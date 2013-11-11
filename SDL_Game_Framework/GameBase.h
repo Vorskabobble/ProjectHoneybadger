@@ -49,7 +49,6 @@ public:
 	*/
 	virtual void start();
 	virtual int getScreenNum();
-
 protected:
 	SDL_Surface* screen;
 	SDL_Surface* bg;
@@ -64,6 +63,8 @@ protected:
 	int pmouseX, pmouseY;
 	int mouseButton;
 	int keyDown, keyUp;
+	int screenNum;
+
 	bool ctrlPressed, shiftPressed, altPressed;
 
 	boolean gameover;
@@ -138,7 +139,6 @@ protected:
 
 private:
 	AWFont* getFontToUse(int color);
-
 private:
 	static SDL_Surface* screen_surface;
 	static SDL_Surface* background_surface;

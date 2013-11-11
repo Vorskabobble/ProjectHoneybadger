@@ -37,11 +37,16 @@ public:
 		int transparentColour;
 		/* load bitmap to temp surface */
 		SDL_Surface* temp = SDL_LoadBMP(bmpName);
+		cout << temp << endl;
 		/* convert bitmap to display format */
 		fontSurface = SDL_DisplayFormat(temp);
+		cout << "display format" << endl;
 		SDL_FreeSurface(temp);
+		cout << "surface free" << endl;
 		SDL_Surface *onto = SDL_GetVideoSurface();
+		cout << "video surface" << endl;
 		transparentColour = SDL_MapRGB(onto->format, 0, 0, 0);
+		cout << "map rgb" << endl;
 		SDL_SetColorKey(fontSurface, (SDL_SRCCOLORKEY | SDL_RLEACCEL), transparentColour);	
 		
 		ifstream widthsFile(widthsName, ios::in | ios::binary);
