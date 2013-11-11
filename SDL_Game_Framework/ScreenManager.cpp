@@ -3,7 +3,6 @@
 
 ScreenManager::ScreenManager(void){
         curScreen = new MenuScreen();
-		cout << "Screen manager constructor" << endl;
         start();
 }
 
@@ -12,7 +11,6 @@ ScreenManager::~ScreenManager(void){
 }
 
 void ScreenManager::start(){
-	cout << "screen manager start" << endl;
         while(curScreen != NULL){
 				screenNum = curScreen->getScreenNum();
                 changeScreen();

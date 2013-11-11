@@ -28,7 +28,7 @@ int GameBase::initSDL(int width, int height){
 		return -1;
 	}
 	// Resize the console window to make it less obvious
-	//console.setSize(30,10,false);
+	console.setSize(30,10,false);
 	// Get default grey background
 	background_surface = getSurface(width, height, 0, 0, 0);
 
@@ -69,8 +69,8 @@ GameBase::GameBase(void){
 	height = screen->h;
 	mouseX = mouseY = 0;
 	cout << "Screen size " << width << " x " << height << endl;
+
 	fs_white = new AWFont("vera_white.bmp", "vera.dat");
-	cout << "font white" << endl;
 	fs_green = new AWFont("vera_green.bmp", "vera.dat");
 	fs_red = new AWFont("vera_red.bmp", "vera.dat");
 }
