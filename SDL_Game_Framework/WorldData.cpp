@@ -67,3 +67,8 @@ SDL_Surface* WorldData::tileSheet(){
 Tile* WorldData::tileData(){
 	return m_tileData;
 }
+
+void WorldData::newLandscape(SDL_Surface* landscape){
+	SDL_FreeSurface(m_landscape);
+	m_landscape = landscape;
+}

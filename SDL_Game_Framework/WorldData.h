@@ -8,8 +8,6 @@ private:
 	int m_width, m_height, m_uniqTiles, m_tileSize, m_chunkSize, m_numChunks, m_numZones;
 	int *m_tiles;
 
-//temp return type, change when classes have been coded
-//	int *zones, *chunks;
 	SDL_Surface *m_landscape;
 	SDL_Surface *m_tileSheet;
 	Tile *m_tileData;
@@ -31,4 +29,6 @@ public:
 	SDL_Surface* tileSheet();
 
 	Tile* tileData();
+
+	void newLandscape(SDL_Surface* landscape);
 };
