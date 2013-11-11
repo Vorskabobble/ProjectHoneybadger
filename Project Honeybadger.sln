@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor", "SDL_Game_Framework\SDL_Game_Framework.vcxproj", "{8E28E0D2-1AAA-4FB8-9D4A-2153AE5D1B75}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "SDL_Game_Framework\SDL_Game_Framework.vcxproj", "{8E28E0D2-1AAA-4FB8-9D4A-2153AE5D1B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,5 +16,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
