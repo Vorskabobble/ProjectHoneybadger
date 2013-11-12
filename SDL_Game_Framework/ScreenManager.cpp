@@ -1,6 +1,5 @@
 #include "ScreenManager.h"
 
-
 ScreenManager::ScreenManager(void){
         curScreen = new MenuScreen();
         start();
@@ -31,6 +30,7 @@ void ScreenManager::changeScreen(){
                         curScreen = new Editor();
                         break;
         case GAME:
+						curScreen = new Game();
                         break;
         default:
                         break;

@@ -1,6 +1,7 @@
 #pragma once
 #include "MenuScreen.h"
 #include "Editor.h"
+#include "Game.h"
 
 enum Screens{MENU, EDITOR, GAME};
 
