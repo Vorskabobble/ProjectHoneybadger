@@ -1,6 +1,6 @@
 #include "Item.h"
 
-Item::Item(char* filePath, string name, int value, int reqLvl, int rarity){
+Item::Item(char* filePath, string name, int value, int reqLvl, int rarity) : AWSprite(filePath, 1, true){
 	m_name = name;
 	m_value = value;
 	m_stamina = 0;

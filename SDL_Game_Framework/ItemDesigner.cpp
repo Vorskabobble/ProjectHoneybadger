@@ -1,16 +1,14 @@
 #include "ItemDesigner.h"
 
-
 ItemDesigner::ItemDesigner(void){
-	int value =  stamina =  agility =  strength = intellect = luck = reqLvl = rarity = 0;
+	value = stamina = agility = strength = intellect = luck = reqLvl = rarity = 0;
 }
-
 
 ItemDesigner::~ItemDesigner(void){
 }
 
 Weapon* ItemDesigner::createWeapon(int lvl, int quality, int type, int power){
-	string name, midName, endName;
+	string midName, endName;
 
 	int  minDamage = 0, maxDamage = 0, speed = 0, range = 0, rndNum;
 	bool fire = false, ice = false, earth = false, lightning = false;
@@ -332,8 +330,69 @@ Armor* ItemDesigner::createArmor(int lvl, int quality, int type, int power){
 	return new Armor(*filePath, name, value, stamina, agility, strength, intellect, luck, reqLvl, rarity, defense, magicResist, armorSlot);
 }
 
-Consumable* ItemDesigner::createConsumable(int lvl, int quality){
-	return NULL;
+Consumable* ItemDesigner::createConsumable(int lvl, int quality, int type){
+	int health, mana;
+	string endName;
+
+	*filePath = "images/game_btn.png";
+
+	setQuality(quality, lvl);
+
+	stamina = agility = strength = intellect = luck = rarity = health = mana = 0;
+	reqLvl = lvl;
+
+	value = lvl* 50;
+	
+	switch(type){
+	case BREAD: 
+		endName = "bread";
+		health = lvl*100; rarity = 1;
+	break;
+	case CHEESE:
+		endName = "cheese";
+		health = lvl*115; rarity = 1;
+	break;
+	case MILK: 
+		endName = "milk";
+		mana = lvl*100; rarity = 1;
+	break;
+	case MANAPOT: 
+		endName = "mana potion";
+		mana = lvl*250; rarity = 2;
+	break;
+	case HEALTHPOT:
+		endName = "health potion";
+		health = lvl*250; rarity =2;
+	break;
+	case CAKE: 
+		endName = "cake";
+		health = lvl*100; mana = lvl*100; rarity = 2;
+	break;
+	case ORANGE: 
+		endName = "orange";
+		health = lvl*100; mana = lvl*50; rarity = 1;
+	break;
+	case APPLE: 
+		endName = "apple";
+		health = lvl*50; mana = lvl*100; rarity = 1;
+	break;
+	case CHERRY:  
+		endName = "cherry";
+		health = lvl*25; health = lvl*25; rarity = 1;
+	break;
+	case WATER:  
+		endName = "water"; rarity = 1;
+		mana = lvl*200;
+	break;
+	case BEER: 
+		endName = "beer";
+		health = -lvl*25; mana = lvl*50; rarity = 2;
+	break;
+	}
+
+	name += endName;
+
+	return new Consumable(*filePath, name, value, reqLvl, rarity, health, mana);
 }
 
 void ItemDesigner::setQuality(int quality, int lvl){
@@ -343,7 +402,7 @@ void ItemDesigner::setQuality(int quality, int lvl){
 			value = lvl*100; stamina = lvl*1; rarity = 1;
 		break;
 		case DULL: 
-			name = "DULL ";
+			name = "Dull ";
 			value = lvl*95; agility = lvl*1;rarity = 1;
 		break;
 		case PATHETIC:
