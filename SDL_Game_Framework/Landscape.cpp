@@ -46,8 +46,8 @@ void Landscape::createLandscape(int width, int height, int size){
 	t_tile.w = t_tile.h = t_place.w = t_place.h = size;
 
 	for(int i = 0; i < width * height; i++){
-		t_tile.x = (m_tiles[i] % (m_tileSheet->w / size)) * size;
-		t_tile.y = (m_tiles[i] / (m_tileSheet->w / size)) * size;
+		t_tile.x = m_tileData[m_tiles[i]].X() * size;
+		t_tile.y = m_tileData[m_tiles[i]].Y() * size;
 
 		if(t_place.x >= width * size){
 			t_place.x = 0;
