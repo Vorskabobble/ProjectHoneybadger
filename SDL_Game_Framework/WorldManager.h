@@ -15,11 +15,11 @@ private:
 public:
 
 	~WorldManager(void);
-	static bool editor;
+//	static bool editor;
 
 	static bool worldExists(int worldID);
 
-	static WorldData* loadWorld(int worldID, bool small);
+	static WorldData* loadWorld(int worldID);
 	static WorldData* loadEditor(int worldID);
 	static bool saveWorld(int worldID, WorldData* data);
 

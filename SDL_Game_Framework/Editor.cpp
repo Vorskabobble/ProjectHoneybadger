@@ -39,7 +39,7 @@ void Editor::fps(){
 }
 
 void Editor::setup(){
-	world = WorldManager::loadWorld(0, false);
+	world = WorldManager::loadWorld(2);
 	m_mCam->xBound(0, world->width() * world->tileSize());
 	m_mCam->yBound(0, world->height() * world->tileSize());
 
@@ -171,7 +171,7 @@ void Editor::onKeyPressed(){
 	case SDLK_d: m_mCam->r(true); break;
 	case SDLK_w: m_mCam->u(true); break;
 	case SDLK_s: m_mCam->d(true); break;
-	case SDLK_p: WorldManager::saveWorld(1, world); break;
+	case SDLK_p: WorldManager::saveWorld(2, world); break;
 	case SDLK_LSHIFT: shiftPressed = true; break;
 	default: break;
 	}

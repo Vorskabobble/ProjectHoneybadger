@@ -1,5 +1,9 @@
 #include "Tile.h"
 
+Tile::Tile(void){
+
+}
+
 Tile::Tile(int x, int y){
 	m_X = x;
 	m_Y = y;
