@@ -12,6 +12,7 @@ enum QUALITY{WEAK, DULL, PATHETIC, SILLY, BENDY, HEROIC, SWIFT, SHARP, EPIC, GRE
 enum POWER{STORM, ZEPHYR, POWER, WINTER, NIGHT, ELEMENTS, ACCURACY, FIRE, ICE, EARTH, LIGHTNING, GODS, UNICORN, MOUNTAIN, STREAM, IMAGINATION, RAIDER, THIEF, MOON, JOKER};
 enum WEAPONTYPE{SWORD, MACE, BOW, STAFF, WAND, CROSSBOW, SPEAR, AXE};
 enum ARMORTYPE{HANDS, FEET, HEAD, CHEST, LEGS};
+enum CONSUMABLETYPE{BREAD, CHEESE, MILK, MANAPOT, HEALTHPOT, CAKE, ORANGE, APPLE, CHERRY, WATER, BEER};
 
 class ItemDesigner{
 	string name;
@@ -23,7 +24,7 @@ public:
 
 	Weapon* createWeapon(int lvl, int quality, int type, int power);
 	Armor* createArmor(int lvl, int quality, int type, int power);
-	Consumable* createConsumable(int lvl, int quality);
+	Consumable* createConsumable(int lvl, int quality, int type);
 
 	void setQuality(int quality, int lvl);
 	string setPower(int power, int lvl);
