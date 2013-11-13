@@ -18,6 +18,14 @@ Chunk::~Chunk(void)
 	}
 }
 
+int Chunk::X(){
+	return m_x;
+}
+
+int Chunk::Y(){
+	return m_y;
+}
+
 Tile* Chunk::solidTiles(void)
 {
 	return m_solids;
