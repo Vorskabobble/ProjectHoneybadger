@@ -220,7 +220,7 @@ void WorldManager::saveChunks(int worldID, WorldData* data){
 			ofstream file(worldDir);
 			for(int k = 0; k < data->chunkSize(); k++){
 				for(int l = 0; l < data->chunkSize(); l++){
-					file << data->tileData()[data->tiles()[l+(k * data->width())]].solid() << " ";
+					file << data->tileData()[data->tiles()[(l + i*data->chunkSize())+((k + j*data->chunkSize()) * data->width())]].solid() << " ";
 				}
 				file << endl;
 			}
