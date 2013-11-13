@@ -69,6 +69,7 @@ GameBase::GameBase(void){
 	height = screen->h;
 	mouseX = mouseY = 0;
 	cout << "Screen size " << width << " x " << height << endl;
+
 	fs_white = new AWFont("vera_white.bmp", "vera.dat");
 	fs_green = new AWFont("vera_green.bmp", "vera.dat");
 	fs_red = new AWFont("vera_red.bmp", "vera.dat");
@@ -97,7 +98,7 @@ void GameBase::setBackground(char *imageFileName){
 	// Get the background image
 	SDL_Surface * temp = IMG_Load(imageFileName);
 	if(temp != NULL){
-		bg = SDL_DisplayFormat(temp);      
+		bg = SDL_DisplayFormat(temp);
 		SDL_FreeSurface(temp);
 	}
 	else{
@@ -121,7 +122,7 @@ void GameBase::getUserInput(){
 		{
 		case SDL_QUIT:
 			gameover = true;
-			getScreenNum();
+			screenNum = -1;
 			break;
 		case SDL_KEYDOWN:
 			ctrlPressed = ((an_event.key.keysym.mod & KMOD_CTRL) == KMOD_CTRL);

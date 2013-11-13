@@ -24,10 +24,16 @@ bool WorldManager::worldExists(int worldID){
 	}
 }
 
-WorldData* WorldManager::loadWorld(int worldID){
+WorldData* WorldManager::loadWorld(int worldID, bool small){
+	editor = small;
 	int t_width, t_height, t_uniqTiles, t_tileSize,  t_chunkSize, t_numChunks, t_numZones;
 	char s[50];
-	sprintf_s(s, "map/world %i/map.dat", worldID);
+	if(editor){
+		sprintf_s(s, "map/world %i/editor.dat", worldID);
+	}
+	else{
+		sprintf_s(s, "map/world %i/map.dat", worldID);
+	}
 	string worldDir = s;
 	ifstream data(worldDir);
 
@@ -97,7 +103,12 @@ Landscape* WorldManager::loadLandscape(int worldID, int width, int height, int t
 	data.close();
 
 	char t[50];
-	sprintf_s(t, "map/world %i/tileSheet.png", worldID);
+	if(editor){
+		sprintf_s(s, "map/world %i/tileSheet.png", worldID);
+	}
+	else{
+		sprintf_s(s, "map/world %i/stileSheet.png", worldID);
+	}
 
 	SDL_Surface* t_tileSheet = IMG_Load(t);
 	Landscape *t_landscape = new Landscape(width, height, tileSize, tiles, tileData, t_tileSheet);
@@ -172,20 +183,3 @@ void WorldManager::saveLandscape(int worldID, WorldData* data){
 		t_width++;
 	}
 }
-
-//WorldData* WorldManager::newWorld(){
-//	WorldData *world = loadWorld(0);
-//	return world;
-//}
-//
-//void WorldManager::newTile(WorldData* world, int X, int Y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid){
-//
-//}
-//
-//void WorldManager::newLandscape(WorldData* world, int width, int height){
-//	delete world->tiles();
-//	int* t_tiles = new int[width * height];
-//	Landscape* temp = new Landscape(width, height, world->tileSize());
-//	world->newLandscape(temp->landscape());
-//
-//}
