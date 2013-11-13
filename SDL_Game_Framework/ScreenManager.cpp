@@ -31,6 +31,7 @@ void ScreenManager::changeScreen(){
                         curScreen = new Editor();
                         break;
         case GAME:
+						curScreen = new Game();
                         break;
         default:
                         break;
