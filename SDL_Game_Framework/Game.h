@@ -2,12 +2,14 @@
 #include "gamebase.h"
 #include "WorldManager.h"
 #include "ItemDesigner.h"
+#include "Player.h"
+#include <vector>
 
 class Game :public GameBase{
 	WorldData* world;
 	ItemDesigner* designer;
-	Armor* myItem;
-
+	vector<Consumable*> myItem;
+	Player* player;
 public:
 	Game(void);
 	~Game(void);
@@ -16,6 +18,7 @@ public:
 	void start();
 	void logic();
 	void draw();
+	void onKeyPressed();
 	void onKeyReleased();
 };
 

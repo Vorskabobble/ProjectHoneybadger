@@ -110,6 +110,7 @@
     <ClInclude Include="ItemDatabase.h" />
     <ClInclude Include="ItemDesigner.h" />
     <ClInclude Include="Landscape.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="ScreenManager.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Landscape.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Weapon.cpp" />
