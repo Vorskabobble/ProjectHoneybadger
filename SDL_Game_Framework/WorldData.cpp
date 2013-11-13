@@ -72,3 +72,7 @@ void WorldData::newLandscape(SDL_Surface* landscape){
 	SDL_FreeSurface(m_landscape);
 	m_landscape = landscape;
 }
+
+void WorldData::numChunks(int num){
+	m_numChunks = num;
+}

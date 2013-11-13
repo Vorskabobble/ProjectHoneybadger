@@ -1,7 +1,11 @@
 #include "Tile.h"
 
-Tile::Tile(){
-
+Tile::Tile(int x, int y){
+	m_X = x;
+	m_Y = y;
+	m_tileID = m_biomeID = 0;
+	m_colourFade = 0.0;
+	m_canWeather = m_solid = false;
 }
 
 Tile::Tile(int x, int y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid)

@@ -39,7 +39,7 @@ void Editor::fps(){
 }
 
 void Editor::setup(){
-	world = WorldManager::loadWorld(0, true);
+	world = WorldManager::loadWorld(0, false);
 	m_mCam->xBound(0, world->width() * world->tileSize());
 	m_mCam->yBound(0, world->height() * world->tileSize());
 

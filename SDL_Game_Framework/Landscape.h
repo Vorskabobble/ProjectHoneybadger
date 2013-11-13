@@ -1,5 +1,6 @@
 #pragma once
 #include "WorldConst.h"
+
 class Landscape{
 private:
 	Tile *m_tileData;

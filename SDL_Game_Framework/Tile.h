@@ -5,7 +5,7 @@ private:
 	float m_colourFade;
 	bool m_canWeather, m_solid;
 public:
-	Tile(void);
+	Tile(int x, int y);
 	Tile(int x, int y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid);
 	~Tile(void);
 	int X();
