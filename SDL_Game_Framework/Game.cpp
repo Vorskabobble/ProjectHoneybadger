@@ -2,19 +2,20 @@
 
 
 Game::Game(void){
+	bg = NULL;
 	setup();
 }
 
 
 Game::~Game(void){
+	delete world;
 }
 
 void Game::setup(){
-	tempWorld = new WorldManager();
-	world = tempWorld->loadWorld(1);
+	world = WorldManager::loadWorld(2);
 
-	delete tempWorld;
-
+	designer = new ItemDesigner;
+	myItem = designer->createArmor(25, 14, 4, 16);
 	start();
 }
 
@@ -33,7 +34,15 @@ void Game::start(){
 }
 
 void Game::logic(){
+	cout << myItem->getName() << endl;
 }
 
 void Game::draw(){
+}
+
+void Game::onKeyReleased(){
+	if(keyUp == SDLK_b){
+		screenNum = 0;
+		gameover = true;
+	}
 }

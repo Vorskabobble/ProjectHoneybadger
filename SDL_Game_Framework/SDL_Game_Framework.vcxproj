@@ -48,8 +48,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>$(LibraryPath)</LibraryPath>
-    <OutDir>..\..\releaseFolder</OutDir>
-    <IntDir>..\..\releaseFolder</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
     <TargetName>ProjHB</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -95,16 +95,19 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="audiomanager.h" />
     <ClInclude Include="AWFont.h" />
     <ClInclude Include="AWSprite.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="console.h" />
+    <ClInclude Include="Consumable.h" />
     <ClInclude Include="Editor.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemDatabase.h" />
+    <ClInclude Include="ItemDesigner.h" />
     <ClInclude Include="Landscape.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="MenuScreen.h" />
@@ -117,25 +120,30 @@
     <ClInclude Include="smanip.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="WorldConst.h" />
     <ClInclude Include="WorldData.h" />
     <ClInclude Include="WorldManager.h" />
     <ClInclude Include="Zone.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="audiomanager.cpp" />
     <ClCompile Include="AWSprite.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Consumable.cpp" />
     <ClCompile Include="Editor.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemDatabase.cpp" />
+    <ClCompile Include="ItemDesigner.cpp" />
     <ClCompile Include="Landscape.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WorldData.cpp" />
     <ClCompile Include="WorldManager.cpp" />
     <ClCompile Include="Zone.cpp" />

@@ -180,6 +180,7 @@ void Editor::onKeyReleased(){
 	case SDLK_d: m_cRight = false; break;
 	case SDLK_w: m_cUp = false; break;
 	case SDLK_s: m_cDown = false; break;
+	case SDLK_b: gameover = true; screenNum = 0; break;
 	default: break;
 	}
 }
