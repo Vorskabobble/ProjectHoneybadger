@@ -39,7 +39,9 @@ void Editor::fps(){
 }
 
 void Editor::setup(){
-	world = WorldManager::loadWorld(0);
+	world = WorldManager::loadWorld(0, true);
+	m_mCam->xBound(0, world->width() * world->tileSize());
+	m_mCam->yBound(0, world->height() * world->tileSize());
 
 	m_tile.x = m_tile.y = m_place.x = m_place.y = 0;
 	m_tile.w = m_tile.h = m_place.w = m_place.h = world->tileSize();
