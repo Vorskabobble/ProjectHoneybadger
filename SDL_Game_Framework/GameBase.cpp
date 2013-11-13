@@ -87,7 +87,7 @@ void GameBase::start(){
 }
 
 int GameBase::getScreenNum(){
-	return -1;
+	return screenNum;
 }
 
 void GameBase::setBackground(int red, int green, int blue){
