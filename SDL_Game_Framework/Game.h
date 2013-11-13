@@ -2,21 +2,14 @@
 #include "gamebase.h"
 #include "WorldManager.h"
 #include "ItemDesigner.h"
-#include "Camera.h"
-
-class Chunk;
+#include "Player.h"
+#include <vector>
 
 class Game :public GameBase{
 	WorldData* world;
 	ItemDesigner* designer;
-	Armor* myItem;
-	Chunk* loadedChunks;
-	Chunk* curChunk;
-
-	Camera* cam;
-
-	AWSprite* player;
-
+	vector<Consumable*> myItem;
+	Player* player;
 public:
 	Game(void);
 	~Game(void);
@@ -25,9 +18,6 @@ public:
 	void start();
 	void logic();
 	void draw();
-
-	void collision();
-
 	void onKeyPressed();
 	void onKeyReleased();
 };
