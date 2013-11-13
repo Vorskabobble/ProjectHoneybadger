@@ -1,18 +1,22 @@
 #pragma once
 #include "gamebase.h"
 #include "WorldManager.h"
+#include "Camera.h"
 
 class Editor : public GameBase{
 private:
 	int m_selTile;
+	DWORD curTime, elasTime, fpsa, fpsc, fpsl;
 
 	SDL_Rect m_place, m_tile, m_cam;
-	bool m_cUp, m_cDown, m_cLeft, m_cRight;
+	Camera* m_mCam;
 	bool click;
 	float m_brushSize;
 public:
 	Editor(void);
 	~Editor(void);
+
+	void fps();
 
 	WorldData *world;
 	
@@ -21,9 +25,8 @@ public:
 
 	void setup();
 	void start();
+	void logic();
 	void draw();
-
-	void camera();
 
 	void onMousePressed();
 	void onMouseMoved();

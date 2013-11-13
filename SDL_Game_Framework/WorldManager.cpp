@@ -25,9 +25,15 @@ bool WorldManager::worldExists(int worldID){
 }
 
 WorldData* WorldManager::loadWorld(int worldID){
+//	editor = small;
 	int t_width, t_height, t_uniqTiles, t_tileSize,  t_chunkSize, t_numChunks, t_numZones;
 	char s[50];
-	sprintf_s(s, "map/world %i/map.dat", worldID);
+//	if(editor){
+//		sprintf_s(s, "map/world %i/editor.dat", worldID);
+//	}
+//	else{
+		sprintf_s(s, "map/world %i/map.dat", worldID);
+//	}
 	string worldDir = s;
 	ifstream data(worldDir);
 
@@ -97,11 +103,37 @@ Landscape* WorldManager::loadLandscape(int worldID, int width, int height, int t
 	data.close();
 
 	char t[50];
-	sprintf_s(t, "map/world %i/tileSheet.png", worldID);
+//	if(editor){
+//		sprintf_s(t, "map/world %i/tileSheet.png", worldID);
+//	}
+//	else{
+		sprintf_s(t, "map/world %i/tileSheet.png", worldID);
+//	}
 
 	SDL_Surface* t_tileSheet = IMG_Load(t);
 	Landscape *t_landscape = new Landscape(width, height, tileSize, tiles, tileData, t_tileSheet);
 	return t_landscape;
+}
+
+Chunk* WorldManager::loadChunk(int worldID, int x, int y, int cSize, int tSize){
+	char s[50];
+	sprintf_s(s, "map/world %i/chunks/chunk%i%i.map", worldID, x, y);
+	string worldDir = s;
+	ifstream data(worldDir);
+
+	Tile* t_tiles;
+	for(int i = 0; i < cSize; i++){
+		for(int j = 0; j < cSize; j++){
+			int solid;
+			data >> solid;
+			if(solid == 1){
+				t_tiles[i] = Tile(cSize * tSize * x * j, cSize * tSize * y * i);
+			}
+		}
+	}
+	Chunk* t_chunk = new Chunk(NULL, t_tiles);
+
+	return t_chunk;
 }
 
 bool WorldManager::saveWorld(int worldID, WorldData* data){
@@ -110,12 +142,12 @@ bool WorldManager::saveWorld(int worldID, WorldData* data){
 	}
 	char s[50];
 	sprintf_s(s, "map/world %i", worldID);
-	if(!chdir(s)){
-		mkdir(s);
-	}
+	mkdir(s);
 	sprintf_s(s, "map/world %i/map.dat", worldID);
 	string worldDir = s;
 	ofstream file(worldDir);
+
+	data->numChunks((data->width() * data->height()) / data->chunkSize());
 
 	file << data->width() << endl;
 	file << data->height() << endl;
@@ -129,6 +161,9 @@ bool WorldManager::saveWorld(int worldID, WorldData* data){
 
 	saveTile(worldID, data->tileData(), data->uniqTiles());
 	saveLandscape(worldID, data);
+	saveChunks(worldID, data);
+
+	cout << "saved" << endl;
 
 	return true;
 }
@@ -173,19 +208,23 @@ void WorldManager::saveLandscape(int worldID, WorldData* data){
 	}
 }
 
-//WorldData* WorldManager::newWorld(){
-//	WorldData *world = loadWorld(0);
-//	return world;
-//}
-//
-//void WorldManager::newTile(WorldData* world, int X, int Y, int tileID, int biomeID, float colourFade, bool canWeather, bool solid){
-//
-//}
-//
-//void WorldManager::newLandscape(WorldData* world, int width, int height){
-//	delete world->tiles();
-//	int* t_tiles = new int[width * height];
-//	Landscape* temp = new Landscape(width, height, world->tileSize());
-//	world->newLandscape(temp->landscape());
-//
-//}
+void WorldManager::saveChunks(int worldID, WorldData* data){
+	char s[50];
+	sprintf_s(s, "map/world %i/chunks", worldID);
+	mkdir(s);
+	for(int i = 0; i < data->height() / data->chunkSize(); i++){
+		for(int j = 0; j < data->width() / data->chunkSize(); j++){
+			char s[50];
+			sprintf_s(s, "map/world %i/chunks/chunk%i%i.map", worldID, i, j);
+			string worldDir = s;
+			ofstream file(worldDir);
+			for(int k = 0; k < data->chunkSize(); k++){
+				for(int l = 0; l < data->chunkSize(); l++){
+					file << data->tileData()[data->tiles()[(l + i*data->chunkSize())+((k + j*data->chunkSize()) * data->width())]].solid() << " ";
+				}
+				file << endl;
+			}
+			file.close();
+		}
+	}
+}

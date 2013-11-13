@@ -2,6 +2,7 @@
 #include "WorldConst.h"
 #include "Landscape.h"
 #include "Zone.h"
+#include "Chunk.h"
 
 class WorldData{
 private:
@@ -31,4 +32,6 @@ public:
 	Tile* tileData();
 
 	void newLandscape(SDL_Surface* landscape);
+
+	void numChunks(int num);
 };
